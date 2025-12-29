@@ -1,0 +1,51 @@
+{
+    "manifest_version": 3,
+    "name": "CF LeetCode Style",
+    "version": "1.0.0",
+    "description": "Convert Codeforces problems to LeetCode-style format",
+    "permissions": [
+        "storage",
+        "activeTab"
+    ],
+    "host_permissions": [
+        "https://codeforces.com/*",
+        "https://generativelanguage.googleapis.com/*"
+    ],
+    "icons": {
+        "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://codeforces.com/problemset/problem/*",
+                "https://codeforces.com/contest/*/problem/*"
+            ],
+            "js": [
+                "katex.min.js",
+                "content.js"
+            ],
+            "css": [
+                "katex.min.css",
+                "leetcode-style.css"
+            ]
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "fonts/*"
+            ],
+            "matches": [
+                "https://codeforces.com/*"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            width: 320px;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #000000 100%);
+            color: white;
+            margin: 0;
+        }
+
+        h2 {
+            margin: 0 0 16px 0;
+            font-size: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            box-sizing: border-box;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            background: white;
+            color: #000000;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #f0f0f0;
+        }
+
+        .status {
+            margin-top: 12px;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            display: none;
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <h2> CF LeetCode Style</h2>
+    <label for="apiKey">Gemini API Key:</label>
+    <input type="text" id="apiKey" placeholder="AIza...">
+    <button id="saveBtn">Save Key</button>
+    <div id="status" class="status"></div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,228 @@
+.cf-leetcode-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    margin-bottom: 16px;
+    background: #2cbb5d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.cf-leetcode-toggle:hover {
+    background: #28a653;
+    transform: translateY(-1px);
+}
+
+.cf-leetcode-toggle svg {
+    width: 16px;
+    height: 16px;
+}
+
+.cf-simplified {
+    background: #282828 !important;
+    padding: 20px !important;
+    border-radius: 8px !important;
+    border: 1px solid #3c3c3c !important;
+    color: rgba(239, 241, 246, 0.75) !important;
+    font-size: 14px !important;
+    line-height: 1.8 !important;
+    box-shadow: none !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+.cf-simplified p {
+    margin: 14px 0 !important;
+    color: rgba(239, 241, 246, 0.75) !important;
+}
+
+.cf-simplified p:first-child {
+    margin-top: 0 !important;
+}
+
+.cf-simplified p:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Inline code/variables*/
+.cf-simplified code {
+    background: #3c3c3c !important;
+    color: #eff1f6bf !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+}
+
+/* Math rendering */
+.math-inline {
+    color: #eff1f6bf;
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+    font-size: 14px;
+}
+
+.math-inline sub,
+.math-inline sup {
+    font-size: 11px;
+}
+
+/* Loading State */
+.cf-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    gap: 16px;
+}
+
+.cf-spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid #3c3c3c;
+    border-top-color: #2cbb5d;
+    border-radius: 50%;
+    animation: cf-spin 0.8s linear infinite;
+}
+
+@keyframes cf-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.cf-loading p {
+    color: rgba(239, 241, 246, 0.5);
+    font-size: 13px;
+    margin: 0;
+}
+
+/* Error State */
+.cf-error {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.cf-error .error-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.cf-error p {
+    color: #cb7676 !important;
+    margin: 8px 0 16px 0;
+    font-size: 14px;
+}
+
+.cf-retry {
+    padding: 8px 20px;
+    background: #2cbb5d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.cf-retry:hover {
+    background: #28a653;
+}
+
+/* Scrollbar */
+.cf-simplified::-webkit-scrollbar {
+    width: 8px;
+}
+
+.cf-simplified::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.cf-simplified::-webkit-scrollbar-thumb {
+    background: #3c3c3c;
+    border-radius: 4px;
+}
+
+.cf-simplified::-webkit-scrollbar-thumb:hover {
+    background: #4a4a4a;
+}
+
+/* KaTeX math rendering  */
+.cf-simplified .katex {
+    font-size: 1.05em !important;
+    color: rgba(239, 241, 246, 0.9) !important;
+}
+
+.cf-simplified .katex .base {
+    color: rgba(239, 241, 246, 0.9) !important;
+}
+
+.cf-simplified .katex .mord,
+.cf-simplified .katex .mrel,
+.cf-simplified .katex .mop,
+.cf-simplified .katex .mbin {
+    color: rgba(239, 241, 246, 0.9) !important;
+}
+
+/* Make inline math stand out slightly */
+.cf-simplified .katex-html {
+    background: rgba(60, 60, 60, 0.3);
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+/* KaTeX font styling - Bold and non-italic */
+.cf-simplified .katex {
+    font-size: 1em !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif !important;
+}
+
+.cf-simplified .katex .base,
+.cf-simplified .katex .mathdefault {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+}
+
+.cf-simplified .katex .mord,
+.cf-simplified .katex .mrel,
+.cf-simplified .katex .mop,
+.cf-simplified .katex .mbin,
+.cf-simplified .katex .mopen,
+.cf-simplified .katex .mclose,
+.cf-simplified .katex .mpunct {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+}
+
+/* Remove italic from math variables */
+.cf-simplified .katex .mathit,
+.cf-simplified .katex .mathnormal {
+    font-style: normal !important;
+    font-weight: 600 !important;
+}
+
+/* Bullet points styling */
+.cf-simplified p {
+    line-height: 1.8 !important;
+}
+
+/* Bold text from \textbf */
+.cf-simplified strong {
+    color: rgba(239, 241, 246, 0.95) !important;
+    font-weight: 700 !important;
+}
+
+/* Remove background from KaTeX (if any) */
+.cf-simplified .katex-html {
+    background: none !important;
+    padding: 0 !important;
+}
