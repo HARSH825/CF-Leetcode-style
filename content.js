@@ -140,6 +140,7 @@
         }, callback);
     }
 
+    // Process text and render all math with KaTeX
     function processAndRenderMath(text) {
         console.log('Processing math in text...');
 
@@ -150,17 +151,20 @@
 
         let processedText = text;
 
+        // Remove LaTeX formatting commands BEFORE rendering math
         processedText = processedText.replace(/\\textbf\{([^\}]+)\}/g, '<strong>$1</strong>');
         processedText = processedText.replace(/\\begin\{itemize\}/g, '');
         processedText = processedText.replace(/\\end\{itemize\}/g, '');
         processedText = processedText.replace(/\\item\s+/g, '• ');
         processedText = processedText.replace(/\\text/g, '');
 
+        // Handle markdown-style formatting
         // ** for bold (but not if it's inside math $...$)
         processedText = processedText.replace(/\*\*([^\*\$]+?)\*\*/g, '<strong>$1</strong>');
 
-        // * at start of line for bullet points
-        processedText = processedText.replace(/^\* /gm, '• ');
+        // Handle bullet points more carefully
+        // Convert standalone * at beginning of lines to bullets with proper line breaks
+        processedText = processedText.replace(/^(\s*)\* /gm, '\n• ');
         processedText = processedText.replace(/\n\* /g, '\n• ');
 
         // Replace all $...$ with KaTeX rendered HTML
@@ -176,12 +180,61 @@
             }
         });
 
-        // Split into paragraphs and wrap in <p> tags
-        const paragraphs = processedText.split('\n\n').filter(p => p.trim());
-        const html = paragraphs.map(p => `<p>${p.trim()}</p>`).join('');
+        // Smart paragraph splitting
+        // Split by double newlines first (major paragraphs)
+        const sections = processedText.split('\n\n');
+
+        const html = sections.map(section => {
+            section = section.trim();
+            if (!section) return '';
+
+            // Check if section contains bullet points
+            if (section.includes('\n• ')) {
+                // Split
+                const lines = section.split('\n').map(line => line.trim()).filter(line => line);
+
+                let result = '';
+                let bulletItems = [];
+                let currentParagraph = '';
+
+                for (let line of lines) {
+                    if (line.startsWith('• ')) {
+                        // If we have a current paragraph, close it
+                        if (currentParagraph) {
+                            result += `<p>${currentParagraph}</p>`;
+                            currentParagraph = '';
+                        }
+                        // Add bullet item
+                        bulletItems.push(line);
+                    } else {
+                        // If we have accumulated bullets, output them first
+                        if (bulletItems.length > 0) {
+                            result += '<ul>' + bulletItems.map(item => `<li>${item.substring(2)}</li>`).join('') + '</ul>';
+                            bulletItems = [];
+                        }
+                        // Add to current paragraph
+                        currentParagraph += (currentParagraph ? ' ' : '') + line;
+                    }
+                }
+
+                // Close any remaining content
+                if (bulletItems.length > 0) {
+                    result += '<ul>' + bulletItems.map(item => `<li>${item.substring(2)}</li>`).join('') + '</ul>';
+                }
+                if (currentParagraph) {
+                    result += `<p>${currentParagraph}</p>`;
+                }
+
+                return result;
+            } else {
+                // Regular paragraph
+                return `<p>${section}</p>`;
+            }
+        }).join('');
 
         return html;
     }
+
 
 
 })();

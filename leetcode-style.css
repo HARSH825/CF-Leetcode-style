@@ -226,3 +226,24 @@
     background: none !important;
     padding: 0 !important;
 }
+
+/* Bullet list styling */
+.cf-simplified ul {
+    margin: 16px 0 !important;
+    padding-left: 24px !important;
+    list-style-type: disc !important;
+}
+
+.cf-simplified li {
+    margin: 8px 0 !important;
+    color: rgba(239, 241, 246, 0.75) !important;
+    line-height: 1.8 !important;
+}
+
+.cf-simplified ul+p {
+    margin-top: 16px !important;
+}
+
+.cf-simplified p+ul {
+    margin-top: 16px !important;
+}
