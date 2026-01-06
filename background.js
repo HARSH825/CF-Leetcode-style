@@ -37,7 +37,7 @@ async function handleSimplify(statement, sendResponse) {
 
 async function callGemini(apiKey, statement) {
     const prompt = `Simplify this competitive programming problem. Remove stories, use direct technical language.Make it absolute leetcode style description of problem , which leetcode users can understand ,i.e. exactly to the point , what is given input and what is to be found/solved . 
-    Make it as short lengthed and as to the point as possible . 
+    Make it as short lengthed and as to the point as possible BUT dont miss important details .  
 
 PROBLEM:
 ${statement}
